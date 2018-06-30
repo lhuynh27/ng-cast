@@ -1,15 +1,15 @@
 <div id="app container">
   <nav class="navbar">
     <div class="col-md-6 col-md-offset-3">
-      <search><h5><em>search</em> component goes here</h5></search>
+      <search>search</search>
     </div>
   </nav>
   <div class="row">
     <div class="col-md-7">
-      <video-player videos="$ctrl.videos"></video-player>
+      <video-player clicked="$ctrl.clicked" current-video="$ctrl.currentVideo"></video-player>
     </div>
     <div class="col-md-5">
-      <video-list videos="$ctrl.videos" index="$ctrl.index"></video-list>
+      <video-list videos="$ctrl.videos" on-click="$ctrl.onClick" index="$ctrl.index"></video-list>
     </div>
   <div>
 </div>
