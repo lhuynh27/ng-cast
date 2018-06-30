@@ -1,21 +1,26 @@
 angular.module('video-player')
-  .service('youTube', function() {
-    $.ajax({
-      url: 'https://www.googleapis.com/youtube/v3/search',
-      type: 'GET',
-      contentType: 'application/json',
-      data: {
-        maxResults: '5',
-        key: 'AIzaSyDPHE8jPo45GkgRqbHEnojVC734cE6XcuA',
-        part: 'snippet',
-        q: 'dog',
-        type: 'video',
-        videoEmbeddable: 'true'
-      },
-      success: function(data) {
-        console.log('success!');
-      }
-    });
+  .service('youTube', function($http) {
+    this.search = function(str, cb) {
+      $http({
+        method: 'GET',
+        url: 'https://www.googleapis.com/youtube/v3/search',
+        // contentType: 'application/json',
+        params: {
+          maxResults: '5',
+          key: window.YOUTUBE_API_KEY,
+          part: 'snippet',
+          q: str,
+          type: 'video',
+          videoEmbeddable: 'true'
+        }
+      })
+        .then(function (data) {
+          console.log(cb);
+          cb(data.data.items);
+          // this callback will be called asynchronously
+          // when the response is available
+        });
+    }; 
   });
 
 // AIzaSyDPHE8jPo45GkgRqbHEnojVC734cE6XcuA
