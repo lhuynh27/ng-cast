@@ -1,11 +1,12 @@
 angular.module('video-player')
   .component('search', {
     bindings: {
-      search: '<',
+      service: '<',
       result: '<',
       query: '='
     },
     controller: function($scope, youTube) {
+      this.debouncedSearch = _.debounce(youTube.search, 750);
     },
     templateUrl: 'src/templates/search.html'
   });

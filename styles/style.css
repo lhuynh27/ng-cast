@@ -21,8 +21,13 @@ body {
 
 .search-bar .form-control {
   border-radius: 2px;
+  width: 100%
+}
+
+.search-bar .form-parent {
   width: 80%
 }
+
 .search-bar .btn {
   border-radius: 2px;
   border-color: #d3d3d3;

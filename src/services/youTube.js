@@ -1,6 +1,6 @@
 angular.module('video-player')
   .service('youTube', function($http) {
-    this.search = function(str, cb) {
+    this.search = function(str, cb, token = '') {
       $http({
         method: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
@@ -11,10 +11,12 @@ angular.module('video-player')
           part: 'snippet',
           q: str,
           type: 'video',
-          videoEmbeddable: 'true'
+          videoEmbeddable: 'true',
+          nextPageToken: token
         }
       })
         .then(function (data) {
+          console.log(data);
           cb(data.data.items);
           // this callback will be called asynchronously
           // when the response is available

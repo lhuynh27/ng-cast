@@ -1,6 +1,10 @@
 <div class="search-bar form-inline">
-  <input class="form-control" type="text" ng-model="$ctrl.query" />
-  <button class="btn" ng-click="$ctrl.search()">
+  <form class="form-parent" ng-submit="$ctrl.service.search($ctrl.query, $ctrl.result)">
+    <input class="form-control" type="text" ng-model="$ctrl.query" />
+  </form>
+  <button class="btn" ng-click="$ctrl.service.search($ctrl.query, $ctrl.result)">
     <span class="glyphicon glyphicon-search"></span>
   </button>
 </div>
+
+<!-- ng-change="$ctrl.debouncedSearch($ctrl.query, $ctrl.result)" -->

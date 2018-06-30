@@ -39,8 +39,7 @@ describe('search', function() {
 
   it('should invoke search when button is clicked', function() {
     element.find('button').click();
-    console.log(youTubeSearchMock);
-    debugger;
+
     expect(youTubeSearchMock.callCount).to.equal(1);
   });
 
@@ -51,7 +50,7 @@ describe('search', function() {
 
 
   // ADVANCED CONTENT TEST
-  xit('should have access to a search service within the scope', function() {
+  it('should have access to a search service within the scope', function() {
     expect(element.isolateScope().$ctrl.service).to.exist;
     expect(element.isolateScope().$ctrl.service).to.be.a('object');
   });

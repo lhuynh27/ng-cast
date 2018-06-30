@@ -7,20 +7,18 @@ angular.module('video-player')
         this.currentVideo = this.videos[this.index];
       };
       this.query = '';
-      this.search = () => {
-        youTube.search(this.query, this.searchResults);
-      };
+      this.search = youTube;
+
+      this.savedSearch;
 
       this.index = 0;
-      this.clicked = false;
       this.selectVideo = () => {};
 
       this.onClick = (index) => {
         this.index = index;
         this.currentVideo = this.videos[this.index];
-        this.clicked = true;
       };
-      this.search();
+      this.search.search(this.query, this.searchResults);
     },
     templateUrl: 'src/templates/app.html'
   });
