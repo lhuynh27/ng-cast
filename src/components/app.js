@@ -1,21 +1,26 @@
 angular.module('video-player')
   .component('app', {
     controller: function($scope, youTube) {
-      this.videos = window.exampleVideoData;
+      this.videos = [{id: {videoId: ''}, snippet: {title: '', description: '', thumbnails: {default: {url: ''}}}}];
+      this.searchResults = (data) => {
+        this.videos = data;
+        this.currentVideo = this.videos[this.index];
+      };
+      this.query = '';
+      this.search = () => {
+        youTube.search(this.query, this.searchResults);
+      };
+
       this.index = 0;
-      this.currentVideo = this.videos[this.index];
       this.clicked = false;
       this.selectVideo = () => {};
-      this.searchResults = () => {};
-      youTube.search({max: '5', key: 'AIzaSyDPHE8jPo45GkgRqbHEnojVC734cE6XcuA', q: 'dog'}, ()=>{});
 
       this.onClick = (index) => {
         this.index = index;
         this.currentVideo = this.videos[this.index];
         this.clicked = true;
-        console.log(this.index);
-        console.log(this.video);
       };
+      this.search();
     },
     templateUrl: 'src/templates/app.html'
   });

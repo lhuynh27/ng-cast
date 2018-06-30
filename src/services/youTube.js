@@ -15,12 +15,9 @@ angular.module('video-player')
         }
       })
         .then(function (data) {
-          console.log(cb);
           cb(data.data.items);
           // this callback will be called asynchronously
           // when the response is available
         });
     }; 
   });
-
-// AIzaSyDPHE8jPo45GkgRqbHEnojVC734cE6XcuA

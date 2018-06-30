@@ -11,6 +11,8 @@ describe('search', function() {
     scope = $rootScope.$new();
 
     youTubeSearchMock = sinon.spy(function(string, callback) {
+      console.log(string);
+      console.log(callback);
       callback(fakeVideoData);
     });
 
@@ -37,6 +39,8 @@ describe('search', function() {
 
   it('should invoke search when button is clicked', function() {
     element.find('button').click();
+    console.log(youTubeSearchMock);
+    debugger;
     expect(youTubeSearchMock.callCount).to.equal(1);
   });
 
